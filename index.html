@@ -1,76 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="http://cdn.embed.ly/jquery.embedly-3.1.1.min.js" type="text/javascript"></script>
-	
-	<script>
-
-
-	// function getHackerNewsURLs(data){
-	//  var counter = 0;
-	//  // var links = data.results.collection1;
-	// 	// for( i in links){
-	// 	// 	var url = "<a class='embedly-card' href='" + links[i].Title.href + "'></a>";
-	// 	// 	$(".wrapper").append(url);
-	// 	// 	counter++;
-	// 	// 	console.log(counter);
-	// 	// }
-	// links = [];
-
-	//  for(var i = 0; i < data.length; i++){
-	// 	        $.get("https://hacker-news.firebaseio.com/v0/item/"+ data[i] +".json", function(data){
-	// 	        	if(data.url){
-	// 					var url = "<a class='embedly-card' href='" + data.url + "'></a>";
-	// 					links.push(url);
-						
-	// 					// $(".wrapper").append(url);
-	// 					// platform();
-	// 				}
-	// 	        });
-	// 	        counter++;
-	// 	        console.log(counter);
-	// 	    }
-	//   if(counter == links.length){
-	//   	// platform();
-	//   }
-	// }
-
-
-	$(document).ready(function(){
-		$.embedly.defaults.key = '3a5f30cee32b4fdc9a65314ae4af5641';
- 
-		$('a').embedly();
-		// $.get("https://www.kimonolabs.com/api/efn8b5ue?apikey=JEKtA7l18lTRrBZA7d7nRUum3AcsULOg", function(data){
-		// 	getHackerNewsURLs(data);
-			// var links = data.results.collection1;
-			// for( i in links){
-			// 	var url = "<a class='embedly-card' href='" + links[i].Title.href + "'></a>";
-			// 	$(".wrapper").append(url);
-			// }
-		   //  for(var i = 0; i < data.length; i++){
-		   //      $.get("https://hacker-news.firebaseio.com/v0/item/"+ data[i] +".json", function(data){
-		   //      	if(data.url){
-					// 	var url = "<a class='embedly-card' href='" + data.url + "'></a>";
-					// 	console.log(url);
-					// 	// $(".wrapper").append(url);
-					// 	// platform();
-
-					// }
-		   //      });
-		   //  }
-		    // console.log("All steps done.");
-		
-
-	});	
-	</script>
-
-</head>
-<body>
-	<div class="wrapper">
-		
-	</div>
-	<a class="embedly-card" href="http://online.wsj.com/news/article_email/former-android-leader-andy-rubin-leaving-google-1414713040-lMyQjAxMTE0NTMxMDQzOTA4Wj"> http://online.wsj.com/news/article_email/former-android-leader-andy-rubin-leaving-google-1414713040-lMyQjAxMTE0NTMxMDQzOTA4Wj</a>
-</body>
+<html ng-app="HackerNewsPlus">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <script src="/js/app.js"></script>
+  </head>
+  <body ng-controller="HackerNewsCtrl">
+    <div class="wrapper">
+    	<div ng-repeat="link in newsLinks">
+    		<a href="{{link}}" class="embedly-card">{{link}}</a>	
+    	</div>
+    </div>
+    <!-- <ul>
+    	<li ng-repeat="link in newsLinks"><a href="{{link}}" class="embedly-card">{{link}}</a></li>
+    </ul> -->
+  </body>
 </html>
