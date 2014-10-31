@@ -353,7 +353,7 @@ angular.module('ngEmbedApp', [])
 
       this.style = this.imageStyle();
 
-      var html = "";
+      var html;
 
       if (UTILS.none(this.url) && !UTILS.none(this.thumbnail_url)) {
         this.url = this.thumbnail_url;
@@ -372,7 +372,7 @@ angular.module('ngEmbedApp', [])
 
       // HTML embed code for thumbnail preview if response type is not a photo/video/rich media/error
       else {
-        html += (!UTILS.none(this.thumbnail_url)) ? '<img src="' + this.thumbnail_url + '" class="thumb" style="' + this.style + '"/></br>' : '';
+        html = (!UTILS.none(this.thumbnail_url)) ? '<img src="' + this.thumbnail_url + '" class="thumb" style="' + this.style + '"/></br>' : '';
         html += (!UTILS.none(this.original_url)) ? '<a href="' + this.original_url + '">' + this.title + '</a>' : '';
         html += (!UTILS.none(this.provider_name)) ? '<a href="' + this.provider_url + '" class="provider">' + this.provider_name + '</a>' : '';
         html += (!UTILS.none(this.description)) ? '<div class="description">' + this.description + '</div>' : '';
