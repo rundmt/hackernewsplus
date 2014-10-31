@@ -1,6 +1,6 @@
-var app = angular.module("HackerNewsPlus", ["firebase"]);
+var app = angular.module("HackerNewsPlus", ["firebase", "angular-embedly"]);
 
-app.controller("HackerNewsCtrl", function($scope, $firebase) {
+app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   $scope.newsLinks = [];
   var ref = new Firebase("https://hacker-news.firebaseio.com/v0/topstories");
   var sync = $firebase(ref);
@@ -23,7 +23,7 @@ app.controller("HackerNewsCtrl", function($scope, $firebase) {
   		// console.log(linkObj);
   		// console.log(data[i].$value);
   	};
-  	embedCard();
+  	// embedCard();
   });
 
   function embedCard(){
@@ -42,4 +42,8 @@ app.controller("HackerNewsCtrl", function($scope, $firebase) {
   // synchronize the object with a three-way data binding
   // click on `index.html` above to see it used in the DOM!
   // syncArray.$bindTo($scope, "data");
+});
+
+app.config(function(embedlyServiceProvider){
+    embedlyServiceProvider.setKey('3a5f30cee32b4fdc9a65314ae4af5641');
 });
