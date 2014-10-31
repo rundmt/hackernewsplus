@@ -1,7 +1,19 @@
-var app = angular.module("HackerNewsPlus", ["firebase", "angular-embedly"]);
+var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp"]);
+
+app.directive('myEmbedlyTest', function() {
+  return {
+    controller: function ($scope, $rootScope) {
+      $scope.key = '3a5f30cee32b4fdc9a65314ae4af5641';
+      $scope.query = {maxwidth:320};
+    }
+  }
+});
 
 app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   $scope.newsLinks = [];
+  // $scope.key = '3a5f30cee32b4fdc9a65314ae4af5641';
+  // $scope.query = {maxwidth:200};
+
   var ref = new Firebase("https://hacker-news.firebaseio.com/v0/topstories");
   var sync = $firebase(ref);
 
@@ -9,7 +21,7 @@ app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   var syncArray = sync.$asArray();
 
   syncArray.$loaded().then(function(data){
-  	for (var i = 0; i < 6; i++) {
+  	for (var i = 0; i < 10; i++) {
   		var currentLink = data[i].$value
   		
   		
@@ -18,10 +30,8 @@ app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   		var linkObj = linkSync.$asObject();
 
   		linkObj.$loaded().then(function(data){
-  			$scope.newsLinks.push(data.url);
-  		})
-  		// console.log(linkObj);
-  		// console.log(data[i].$value);
+  			$scope.newsLinks.push(data);
+  		})  		
   	};
   	// embedCard();
   });
@@ -44,6 +54,6 @@ app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   // syncArray.$bindTo($scope, "data");
 });
 
-app.config(function(embedlyServiceProvider){
-    embedlyServiceProvider.setKey('3a5f30cee32b4fdc9a65314ae4af5641');
-});
+// app.config(function(embedlyServiceProvider){
+//     embedlyServiceProvider.setKey('3a5f30cee32b4fdc9a65314ae4af5641');
+// });
