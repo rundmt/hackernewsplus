@@ -1,4 +1,4 @@
-var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp"]);
+var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp", "wu.masonry"]);
 
 app.directive('myEmbedlyTest', function() {
   return {
