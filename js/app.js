@@ -1,11 +1,11 @@
-var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp", "akoenig.deckgrid"]);
+var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp"]);
 
 app.directive('myEmbedlyTest', function() {
   return {
     controller: function ($scope, $rootScope) {
       $scope.key = '3a5f30cee32b4fdc9a65314ae4af5641';
       $scope.query = {
-                        maxwidth: 320,                        
+                        maxwidth: 500,                        
                         chars: 300,
                         autoplay: false
                       };
