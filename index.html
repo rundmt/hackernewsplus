@@ -5,11 +5,13 @@
 
         <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
-        <script src="bower_components/angular-masonry/angular-masonry.js"></script>
+        <script src="bower_components//angular-deckgrid/angular-deckgrid.js"></script>
         <script src="/js/angular-embedly.js"></script>
         <script src="/js/app.js"></script>
+
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
     </head>
     <body ng-controller="HackerNewsCtrl">
         <nav class="navbar navbar-custom" role="navigation">
@@ -27,15 +29,18 @@
             <!--/.container-fluid -->
         </nav>
         <div class="container">
-            <masonry preserve-order column-width="200">
-			    <div class="masonry-brick" ng-repeat="link in newsLinks">
+            
+			    
 			    	 <div my-embedly-test>
-                        <div ng-embedly key="key">
+                     <div  ng-repeat="link in newsLinks">
+                        <div class="col-md-4 link-block" ng-embedly key="key" query="query" >
+                            <!-- {{$index}} -->
                             <a href="{{link.url}}"></a>	
                         </div>
+                        </div>
                     </div>
-			    </div>			    
-			</masonry>
+			    			    
+			
             <!-- <masonry column-width="200">
                 <div  class="mybrick"  ng-repeat="link in newsLinks">
                     <div my-embedly-test>

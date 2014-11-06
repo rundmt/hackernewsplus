@@ -372,15 +372,15 @@ angular.module('ngEmbedApp', [])
 
       // HTML embed code for thumbnail preview if response type is not a photo/video/rich media/error
       else {
-        html = (!UTILS.none(this.thumbnail_url)) ? '<img src="' + this.thumbnail_url + '" class="thumb" style="' + this.style + '"/></br>' : '';
+        html = (!UTILS.none(this.thumbnail_url)) ? '<a href="' + this.original_url + '">' +'<img src="' + this.thumbnail_url + '" class="thumb" style="' + this.style + '"/></a></br>' : '';
         html += (!UTILS.none(this.original_url)) ? '<a href="' + this.original_url + '">' + this.title + '</a>' : '';
-        html += (!UTILS.none(this.provider_name)) ? '<a href="' + this.provider_url + '" class="provider">' + this.provider_name + '</a>' : '';
+        html += (!UTILS.none(this.provider_name)) ? '<p class="provider">(' + this.provider_url + ')</p>' : '';        
         html += (!UTILS.none(this.description)) ? '<div class="description">' + this.description + '</div>' : '';
       }
 
       // Wrap HTML embed code in div with class name (custom class name if specified)
       html = '<' + this.options.wrapElement+ ' class="' + this.options.className + '">' + html + '</' + this.options.wrapElement + '>';
-
+      
       this.code = html;
 
       // Insert HTML embed code in the DOM as specified by method type (use replace method by default)

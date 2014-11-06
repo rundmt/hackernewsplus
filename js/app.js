@@ -1,10 +1,14 @@
-var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp", "wu.masonry"]);
+var app = angular.module("HackerNewsPlus", ["firebase", "ngEmbedApp", "akoenig.deckgrid"]);
 
 app.directive('myEmbedlyTest', function() {
   return {
     controller: function ($scope, $rootScope) {
       $scope.key = '3a5f30cee32b4fdc9a65314ae4af5641';
-      $scope.query = {maxwidth:320};
+      $scope.query = {
+                        maxwidth: 320,                        
+                        chars: 300,
+                        autoplay: false
+                      };
     }
   }
 });
@@ -21,7 +25,7 @@ app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   var syncArray = sync.$asArray();
 
   syncArray.$loaded().then(function(data){
-  	for (var i = 0; i < 10; i++) {
+  	for (var i = 0; i < 100; i++) {
   		var currentLink = data[i].$value
   		
   		
@@ -33,22 +37,9 @@ app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   			$scope.newsLinks.push(data);
   		})  		
   	};
-  	// embedCard();
+
   });
 
-  function embedCard(){
-  	(function(w, d){
-	   var id='embedly-platform', n = 'script';
-	   if (!d.getElementById(id)){
-	     w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
-	     var e = d.createElement(n); e.id = id; e.async=1;
-	     e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
-	     var s = d.getElementsByTagName(n)[0];
-	     s.parentNode.insertBefore(e, s);
-	   }
-	  })(window, document);
-
-  }
   // synchronize the object with a three-way data binding
   // click on `index.html` above to see it used in the DOM!
   // syncArray.$bindTo($scope, "data");
