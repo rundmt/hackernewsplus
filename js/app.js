@@ -5,7 +5,7 @@ app.directive('myEmbedlyTest', function() {
     controller: function ($scope, $rootScope) {
       $scope.key = '3a5f30cee32b4fdc9a65314ae4af5641';
       $scope.query = {
-                        maxwidth: 500,                        
+                        maxwidth: 500,
                         chars: 300,
                         autoplay: false
                       };
@@ -25,17 +25,17 @@ app.controller("HackerNewsCtrl",  function($scope, $firebase) {
   var syncArray = sync.$asArray();
 
   syncArray.$loaded().then(function(data){
-  	for (var i = 0; i < 100; i++) {
+  	for (var i = 0; i < 30; i++) {
   		var currentLink = data[i].$value
-  		
-  		
+
+
   		var linkRef = new Firebase(" https://hacker-news.firebaseio.com/v0/item/" + currentLink);
   		var linkSync = $firebase(linkRef);
   		var linkObj = linkSync.$asObject();
 
   		linkObj.$loaded().then(function(data){
   			$scope.newsLinks.push(data);
-  		})  		
+  		})
   	};
 
   });
